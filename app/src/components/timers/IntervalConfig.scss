@@ -1,0 +1,49 @@
+.time {
+  display: block;
+  font-size: 24px;
+  margin: 32px 8px;
+}
+
+.time-units {
+  display: inline-block;
+  position: relative;
+}
+
+.time button {
+  display: block;
+  position: absolute;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.time button.increase {
+  top: -22px;
+  left: 10px;
+}
+
+.time button.decrease {
+  left: 10px;
+  top: 52px;
+}
+
+.time input {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  width: 50px;
+  font-size: 24px;
+  padding: 8px 4px 8px 4px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.colon {
+  display: inline;
+  text-align:center;
+}

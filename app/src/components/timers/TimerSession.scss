@@ -1,0 +1,26 @@
+span.session-timer-text {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.session-round {
+  padding: 20px;
+  border: 1px solid white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.curr-round {
+  font-size: 32px;
+}
+
+.round-inactive {
+  background-color: black;
+}
+
+.session-timer {
+  font-size: 1.5em;
+  color: white;
+}
