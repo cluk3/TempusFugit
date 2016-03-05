@@ -38,6 +38,7 @@ proxy.on('error', function(error, req, res) {
   res.end(JSON.stringify(json));
 });
 
+console.log("worker: " +config.app.port);
 
 server.listen(config.app.port || process.env.PORT, function(err) {
   if (err) {

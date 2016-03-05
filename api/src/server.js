@@ -29,5 +29,6 @@ app.use(function *(next) {
 });
 
 routes(app);
+console.log("worker: " +config.app.port);
 
 export default app.listen(config.app.apiPort);
