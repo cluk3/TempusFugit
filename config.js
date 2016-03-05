@@ -1,9 +1,9 @@
 var path = require("path");
-
+var env = process.env.NODE_ENV;
 var base = {
   app: {
     root: path.normalize(path.join(__dirname)),
-    env: process.env.NODE_ENV,
+    env: env,
   },
   jwt: {
     secret: "1ts4s3cr37!"
