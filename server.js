@@ -39,7 +39,7 @@ proxy.on('error', function(error, req, res) {
 });
 
 
-server.listen(process.env.PORT || config.app.port, function(err) {
+server.listen(config.app.port || process.env.PORT, function(err) {
   if (err) {
     console.error(err);
   }
