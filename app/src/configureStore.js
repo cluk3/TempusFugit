@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { syncHistory, routeReducer } from 'react-router-redux';
 import history from './history';
 import { clockMiddleware } from './actions/timer/session';
-import { app } from '../../config';
+import config from '../../config';
 
 
 const rootReducer = combineReducers(Object.assign({}, reducers, {
@@ -18,7 +18,7 @@ const middlewares =[
   clockMiddleware
 ];
 
-if(app.env !== 'production') {
+if(config.app.env !== 'production') {
   const createLogger = require('redux-logger');
   const loggerMiddleware = createLogger();
   middlewares.push(loggerMiddleware);
