@@ -1,6 +1,5 @@
 var path = require("path");
 var env = process.env.NODE_ENV;
-console.log(env);
 var base = {
   app: {
     root: path.normalize(path.join(__dirname)),
@@ -72,4 +71,8 @@ var specific = {
   }
 };
 
+console.log(specific.production.app.port);
+console.log(specific[env].app.port);
+console.log(specific.production.app.host);
+console.log(specific[env].app.host);
 module.exports = Object.assign({},base, specific[env]);
