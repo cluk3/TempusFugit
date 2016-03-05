@@ -5,7 +5,7 @@ export const SET_ROUND_NAME = 'SET_ROUND_NAME';
 export function setColor(color, intervalIndex, roundIndex) {
   return {
     type: SET_COLOR,
-    color,
+    color: color,
     intervalIndex,
     roundIndex
   };

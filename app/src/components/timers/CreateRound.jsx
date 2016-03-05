@@ -9,6 +9,7 @@ import Paper from 'material-ui/lib/paper';
 import PureMixin from 'react-pure-render/mixin';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentRemove from 'material-ui/lib/svg-icons/content/remove';
+import RoundColors from '../../constants/RoundColors';
 
 //TODO
 const CreateRound = React.createClass({
@@ -44,7 +45,7 @@ const CreateRound = React.createClass({
           <TextField
             hintText = 'Insert round name'
             floatingLabelText = 'Round Name'
-            defaultValue={'Round '+(roundIndex+1)}
+            defaultValue={name}
             type='text'
             maxLength={15}
             onChange = {(ev) => {
@@ -64,12 +65,11 @@ const CreateRound = React.createClass({
           value={color}
           floatingLabelText = 'Color'
           onChange = { (e,i, value) => onRoundColorChange(value, intervalIndex, roundIndex) }>
-            <MenuItem value={'red'} primaryText='Red'/>
-            <MenuItem value={'green'} primaryText='Green'/>
-            <MenuItem value={'#3F09C2'} primaryText='Blue'/>
-            <MenuItem value={'yellow'} primaryText='Yellow'/>
-            <MenuItem value={'purple'} primaryText='Purple'/>
-            <MenuItem value={'orange'} primaryText='Orange'/>
+            <MenuItem value={RoundColors[0]} primaryText='Green'/>
+            <MenuItem value={RoundColors[1]} primaryText='Orange'/>
+            <MenuItem value={RoundColors[2]} primaryText='Blue'/>
+            <MenuItem value={RoundColors[3]} primaryText='Yellow'/>
+            <MenuItem value={RoundColors[4]} primaryText='Purple'/>
           </SelectField>
           <br/>
           <br/>

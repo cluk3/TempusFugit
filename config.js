@@ -15,7 +15,8 @@ var base = {
 var specific = {
   development: {
     app: {
-      port: 3000,
+      apiPort: 8180,
+      port: 8080,
       name: "TempusFugit - Dev",
       keys: [ "super-secret-hurr-durr" ],
       host: "localhost",
@@ -53,9 +54,10 @@ var specific = {
   },
   production: {
     app: {
-      port: process.env.PORT || 3000,
+      port: process.env.PORT,
+      apiPort: process.env.APIPORT,
       name: "TempusFugit",
-      host: "production host",
+      host: process.env.HOST,
       cookies: {
         opts: {
           secure: true,
@@ -66,7 +68,7 @@ var specific = {
       }
     },
     mongo: {
-      url: "mongodb://localhost/tempus",
+      url: process.env.PROD_MONGODB,
     },
   },
 };

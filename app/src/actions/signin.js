@@ -2,7 +2,10 @@ import fetch from 'isomorphic-fetch';
 import { routeActions } from 'react-router-redux';
 import { openSnackbar } from './snackbar';
 import { setErr } from './errors';
+import config from '../../../config';
+
 const HOME_PAGE = '/';
+const actionLink = 'http://' + config.app.host + ':' + config.app.port + '/api/signin';
 
 export const SIGNIN_REQUEST = 'SIGNIN_REQUEST';
 export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
@@ -41,7 +44,6 @@ export function fetchSignin(credentials) {
 
     dispatch(signinRequest());
 
-    const actionLink = 'http://localhost:3000/signin';
     const fetchOpts =  {
       method: 'post',
       headers: {

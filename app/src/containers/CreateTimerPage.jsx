@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onAddInterval: () => dispatch(addInterval()),
     onRemoveInterval: (index) => dispatch(removeInterval(index)),
     onTimerNameChange: (name) => dispatch(setTimerName(name)),
-    onAddRound: (intervalIndex) => dispatch(addRound(intervalIndex)),
+    onAddRound: (intervalIndex, roundIndex) => dispatch(addRound(intervalIndex, roundIndex)),
     onRemoveRound: (roundIndex, intervalIndex) => dispatch(removeRound(roundIndex, intervalIndex)),
     onIntervalTypeChange: (intervalType, intervalIndex) => dispatch(setType(intervalType, intervalIndex)),
     onIntervalRepeatChange: (repeat, intervalIndex) => dispatch(setRepeat(repeat, intervalIndex)),

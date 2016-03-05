@@ -71,7 +71,7 @@ const CreateInterval = React.createClass({
         <TextField type='number' min='1'
           hintText = 'Times to repeat the interval'
           floatingLabelText = 'Interval repeats'
-          defaultValue='1'
+          defaultValue={repeat}
           onChange = {(ev) => {
             ev.persist();
             onIntervalRepeatChange(ev.target.value, intervalIndex);
@@ -83,7 +83,7 @@ const CreateInterval = React.createClass({
         <Row end='xs'>
         <Col xs={2}><p>Add Round</p></Col>
         <Col xs={1}>
-        <FloatingActionButton onMouseDown={() => onAddRound(intervalIndex)}>
+        <FloatingActionButton onMouseDown={() => onAddRound(intervalIndex, Rounds.length)}>
           <ContentAdd />
         </FloatingActionButton>
         </Col>

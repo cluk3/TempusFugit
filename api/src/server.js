@@ -30,4 +30,4 @@ app.use(function *(next) {
 
 routes(app);
 
-export default app.listen(config.app.port);
+export default app.listen(config.app.apiPort);

@@ -6,8 +6,8 @@ import {
 
 const initialState = {
   duration: 35,
-  name: '',
-  color: 'green',
+  name: 'Round 1',
+  color: '#00CA4B',
 };
 
 export default function roundReducer(state = initialState, action) {

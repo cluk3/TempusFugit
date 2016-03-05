@@ -42,7 +42,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.scss']
   },
   output: {
-    path: process.env.NODE_ENV === 'production' ? path.resolve(ROOT_PATH, 'app/dist') : path.resolve(ROOT_PATH, 'app/build'),
+    path: path.resolve(ROOT_PATH, 'app/build'),
     publicPath: '/',
     filename: 'bundle.js',
   },

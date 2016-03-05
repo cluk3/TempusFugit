@@ -2,6 +2,9 @@ import fetch from 'isomorphic-fetch';
 import { routeActions } from 'react-router-redux';
 import { openSnackbar } from './snackbar';
 import { setErr } from './errors';
+import config from '../../../config';
+
+const actionLink = 'http://' + config.app.host + ':' + config.app.port + '/api/signup';
 const HOME_PAGE = '/';
 
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
@@ -39,7 +42,6 @@ export function fetchSignup(credentials) {
 
     dispatch(signupRequest());
 
-    const actionLink = 'http://localhost:3000/signup';
     const fetchOpts =  {
       method: 'post',
       headers: {

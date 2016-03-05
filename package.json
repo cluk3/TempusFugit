@@ -20,20 +20,14 @@
     "lint": "eslint . --ext .js --ex; exit 0t .jsx; exit 0",
     "deploy": "NODE_ENV=production webpack -p",
     "start": "npm run dev",
-    "clean": "rm -rf app/dist app/build"
+    "clean": "rm -rf app/dist app/build",
+    "postinstall": "webpack -p --config ./webpack-production.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/cluk3/"
   },
-  "keywords": [
-    "boilerplate",
-    "koa",
-    "redux",
-    "react",
-    "webpack",
-    "mocha"
-  ],
+  "keywords": [],
   "author": "Luca Campli",
   "license": "MIT",
   "homepage": "https://github.com/cluk3/",
@@ -46,6 +40,9 @@
     "babel-preset-stage-0": "^6.3.13",
     "bcrypt": "^0.8.5",
     "classnames": "^2.2.3",
+    "compression": "^1.6.1",
+    "connect-history-api-fallback": "^1.1.0",
+    "express": "^4.13.4",
     "flexboxgrid": "^6.3.0",
     "history": "^1.14.0",
     "howler": "^1.1.29",

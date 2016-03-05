@@ -1,12 +1,18 @@
+import RoundColors from '../../constants/RoundColors';
+
 export const ADD_ROUND = 'ADD_ROUND';
 export const REMOVE_ROUND = 'REMOVE_ROUND';
 export const SET_TYPE = 'SET_TYPE';
 export const SET_REPEAT = 'SET_REPEAT';
 
-export function addRound(intervalIndex, round) {
+export function addRound(intervalIndex, roundIndex) {
   return {
     type: ADD_ROUND,
-    round,
+    round: {
+      name: 'Round '+(roundIndex+1),
+      duration: 30,
+      color: RoundColors[roundIndex%RoundColors.length]
+    },
     intervalIndex
   };
 }
