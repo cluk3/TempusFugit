@@ -21,7 +21,7 @@
     "deploy": "NODE_ENV=production webpack -p",
     "start": "node server.js",
     "clean": "rm -rf app/dist app/build",
-    "postinstall": "webpack -p --config ./webpack-production.config.js --progress --colors"
+    "postinstall": "NODE_ENV=production webpack -p --config ./webpack-production.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
