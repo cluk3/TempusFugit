@@ -1,5 +1,6 @@
 var path = require("path");
 var env = process.env.NODE_ENV;
+console.log(env);
 var base = {
   app: {
     root: path.normalize(path.join(__dirname)),
@@ -55,7 +56,7 @@ var specific = {
       port: process.env.PORT,
       apiPort: process.env.APIPORT,
       name: "TempusFugit",
-      host: 'https://'+process.env.HOST,
+      host: 'https://peaceful-reef-80351.herokuapp.com/',
       cookies: {
         opts: {
           secure: true,
@@ -68,7 +69,7 @@ var specific = {
     mongo: {
       url: process.env.PROD_MONGODB,
     },
-  },
+  }
 };
 
 module.exports = Object.assign({},base, specific[env]);
