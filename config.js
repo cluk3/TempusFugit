@@ -1,9 +1,9 @@
 var path = require("path");
-var baobab = process.env.NODE_ENV;
+
 var base = {
   app: {
     root: path.normalize(path.join(__dirname)),
-    env: baobab,
+    env: process.env.NODE_ENV,
   },
   jwt: {
     secret: "1ts4s3cr37!"
@@ -71,4 +71,4 @@ var specific = {
   }
 };
 
-module.exports = Object.assign({},base, specific[baobab]);
+module.exports = Object.assign({},base, specific[process.env.NODE_ENV]);
