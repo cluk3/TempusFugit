@@ -3,7 +3,7 @@ var path = require("path");
 var base = {
   app: {
     root: path.normalize(path.join(__dirname)),
-    env: process.env.NODE_ENV,
+    env: 'production',
   },
   jwt: {
     secret: "1ts4s3cr37!"
@@ -71,4 +71,4 @@ var specific = {
   }
 };
 
-module.exports = Object.assign({},base, specific[process.env.NODE_ENV]);
+module.exports = Object.assign({},base, specific['production']);
