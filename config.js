@@ -1,11 +1,9 @@
 var path = require("path");
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
 var base = {
   app: {
     root: path.normalize(path.join(__dirname)),
-    env: env,
+    env: process.env.NODE_ENV,
   },
   jwt: {
     secret: "1ts4s3cr37!"
@@ -19,7 +17,7 @@ var specific = {
       port: 8080,
       name: "TempusFugit - Dev",
       keys: [ "super-secret-hurr-durr" ],
-      host: "localhost",
+      host: "http://localhost",
       cookies: {
         opts: {
           secure: false,
@@ -38,7 +36,7 @@ var specific = {
       port: 3001,
       name: "TempusFugit - Test",
       keys: [ "super-secret-hurr-durr" ],
-      host: "localhost",
+      host: "http://localhost",
       cookies: {
         opts: {
           secure: false,
@@ -57,7 +55,7 @@ var specific = {
       port: process.env.PORT,
       apiPort: process.env.APIPORT,
       name: "TempusFugit",
-      host: process.env.HOST,
+      host: 'https://'+process.env.HOST,
       cookies: {
         opts: {
           secure: true,

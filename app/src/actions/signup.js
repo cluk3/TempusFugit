@@ -4,7 +4,7 @@ import { openSnackbar } from './snackbar';
 import { setErr } from './errors';
 import config from '../../../config';
 
-const actionLink = 'http://' + config.app.host + ':' + config.app.port + '/api/signup';
+const actionLink = config.app.host + ':' + config.app.port + '/api/signup';
 const HOME_PAGE = '/';
 
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';

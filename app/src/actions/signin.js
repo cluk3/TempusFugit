@@ -5,7 +5,7 @@ import { setErr } from './errors';
 import config from '../../../config';
 
 const HOME_PAGE = '/';
-const actionLink = 'http://' + config.app.host + ':' + config.app.port + '/api/signin';
+const actionLink = config.app.host + ':' + config.app.port + '/api/signin';
 
 export const SIGNIN_REQUEST = 'SIGNIN_REQUEST';
 export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';

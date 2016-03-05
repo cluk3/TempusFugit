@@ -6,7 +6,7 @@ var path = require('path');
 var http = require('http');
 var historyApiFallback = require('connect-history-api-fallback');
 
-const targetUrl = 'http://' + config.app.host + ':' + config.app.apiPort;
+const targetUrl = config.app.host + ':' + config.app.apiPort;
 var static_path = path.join(__dirname, '/app/dist');
 const app = new Express();
 const server = new http.Server(app);
