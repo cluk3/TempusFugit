@@ -1,2 +1,2 @@
-web: node server.expr.js
+web: node server.js
 worker: node api/register.js
