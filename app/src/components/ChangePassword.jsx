@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { openSnackbar } from '../actions/snackbar';
 import { setErr } from '../actions/errors';
 import { logout } from '../actions/logout';
+import config from '../../../config';
 const HOME_PAGE = '/';
 
 
@@ -49,7 +50,7 @@ const ChangePassword = React.createClass({
     this.setState({
       isFetching: true,
     });
-    const actionLink = 'http://localhost:3000/change-password';
+    const actionLink = config.app.host + '/api/change-password';
     const fetchOpts =  {
       method: 'PATCH',
       headers: {

@@ -1,2 +1,1 @@
-web: node server.js
-worker: node api/register.js
+web: node api/register.js
