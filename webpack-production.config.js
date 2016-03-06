@@ -4,6 +4,7 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const ROOT_PATH = path.resolve(__dirname);
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const config = require('./config');
 
 module.exports = {
   devtool: 'source-map',
@@ -51,7 +52,7 @@ module.exports = {
     new ExtractTextPlugin('bundle.css', {allChunks: true}),
     new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify("production"),
+          NODE_ENV: JSON.stringify(config.env),
         }
       }),
     new HtmlwebpackPlugin({
