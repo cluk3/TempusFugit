@@ -63,7 +63,7 @@ const CreateTimer = React.createClass({
             floatingLabelText = 'Timer Name'
             maxLength={20}
             type="text"
-            defaultValue='MyNewTimer'
+            defaultValue={name}
             onChange= {(ev) => {
               ev.persist();
               this.onTimerNameChange(ev.target.value);

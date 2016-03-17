@@ -18,7 +18,7 @@ import roundReducer from './round';
 import intervalReducer from './interval';
 
 const initialState = {
-  name: '',
+  name: 'MyNewTimer',
   intervals: [intervalReducer(undefined,{})]
 };
 
