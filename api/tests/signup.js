@@ -10,7 +10,7 @@ describe('Signup', () => {
 
   it('should return json with user id and name', (done) => {
     request(app)
-    .post('/signup')
+    .post('/api/signup')
     .type('form')
     .send({
       username: 'lucaaa',
@@ -31,7 +31,7 @@ describe('Signup', () => {
 
   it('should login the user', (done) => {
     request(app)
-    .post('/signup')
+    .post('/api/signup')
     .type('form')
     .send({
       username: 'campli',
@@ -48,39 +48,28 @@ describe('Signup', () => {
 
   it('should return error if response has no username field', (done) => {
     request(app)
-    .post('/signup')
+    .post('/api/signup')
     .send({
       password: 'wordpass'
     })
     .expect('Content-Type', /json/)
     .expect(422)
     .end(function(err, res){
-      expect(res.body.errors).to.eql(['Missing username']);
+      expect(res.body.errors).to.eql(['Path `username` is required.']);
       done();
     });
   });
 
   it('should return error if response has no password field', (done) => {
     request(app)
-    .post('/signup')
+    .post('/api/signup')
     .send({
       username: 'luca'
     })
     .expect('Content-Type', /json/)
     .expect(422)
     .end(function(err, res){
-      expect(res.body.errors).to.eql(['Missing password']);
-      done();
-    });
-  });
-
-  it('should return error if response has no psw and username field', (done) => {
-    request(app)
-    .post('/signup')
-    .expect('Content-Type', /json/)
-    .expect(422)
-    .end(function(err, res){
-      expect(res.body.errors).to.eql(['Missing username','Missing password']);
+      expect(res.body.errors).to.eql(['Path `password` is required.']);
       done();
     });
   });

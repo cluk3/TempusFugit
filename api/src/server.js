@@ -10,7 +10,8 @@ import dbConfig from './db_config';
 import compress from 'koa-compress';
 import historyApiFallback from 'koa-connect-history-api-fallback';
 //import cors from 'koa-cors';
-var serve = require('koa-static');
+import serve from 'koa-static';
+import favicon from 'koa-favicon';
 
 const app = koa();
 /*
@@ -20,15 +21,17 @@ app.use(cors({
 }));
 */
 app.use(compress());
+app.use(logger());
+app.use(favicon(__dirname + '/favicon/favicon.ico'));
 app.use(historyApiFallback());
-app.use(serve(path.join(config.root,'app','dist')));
-console.log(config.env);
-
+if(config.env === 'production')
+  app.use(serve(path.join(config.root,'app','dist')));
+else
+  app.use(serve(path.join(config.root,'app','build')));
 dbConfig();
 
-if (config.env !== "test") {
-  app.use(logger());
-}
+
+
 
 app.use(auth);
 app.use(bodyparser());

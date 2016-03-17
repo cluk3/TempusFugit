@@ -1,13 +1,15 @@
 import errors from './errors';
 import auth from './auth';
-import snackbar from './snakcbar';
-import timer from './timer';
-import session from './session';
+import snackbar from './snackbar';
+import timers from './timers';
+import newTimer from './timers/newTimer';
+import timerSession from './timers/session';
 
 export default {
-  session,
+  timerSession,
   errors,
   snackbar,
   auth,
-  timer
+  newTimer,
+  timers
 };

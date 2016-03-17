@@ -3,7 +3,6 @@ import CreateInterval from './CreateInterval';
 import TextField from 'material-ui/lib/text-field';
 import Row from 'react-flexbox-grid/lib/components/Row';
 import Col from 'react-flexbox-grid/lib/components/Col';
-import Paper from 'material-ui/lib/paper';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
@@ -33,7 +32,7 @@ const CreateTimer = React.createClass({
       onRoundColorChange,
       onRoundDurationChange,
       totalTime,
-      startTimerSession
+      saveTimer
     } = this.props;
 
     const Intervals = intervals.map((interval,i) => {
@@ -54,7 +53,6 @@ const CreateTimer = React.createClass({
     });
 
     return (
-      <Paper zDepth={5} rounded={false}>
       <Row center='xs'>
       <Col xs = {12}>
         <Row><Col xs={12}><h2>Create new Timer:</h2></Col></Row>
@@ -88,14 +86,14 @@ const CreateTimer = React.createClass({
         </Row>
         <Row>
         <Col xs={12}>
-          <RaisedButton onMouseDown={() => startTimerSession({name, intervals})} label="Create Timer" primary={true}/>
+          <RaisedButton onMouseUp={() => saveTimer({name, intervals})} label="Create Timer" primary={true}/>
+          <RaisedButton onMouseUp={() => saveTimer({name, intervals}, true)} label="Start Timer" primary={true}/>
         </Col>
         </Row>
         <br/>
         <br/>
       </Col>
       </Row>
-      </Paper>
     );
   }
 });

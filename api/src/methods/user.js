@@ -14,17 +14,8 @@ exports.signup = function *() {
   if (!this.request.body) {
     this.status = 400;
     result.errors.push('The body is empty');
-  }
-  if (!this.request.body.username) {
-    this.status = 422;
-    result.errors.push('Missing username');
-  }
-  if (!this.request.body.password) {
-    this.status = 422;
-    result.errors.push('Missing password');
-  }
-  if(this.status === 422 || this.status === 400)
     return this.body = result;
+  }
 
   try {
     var user = new User({ username: this.request.body.username, password: this.request.body.password });
@@ -40,11 +31,18 @@ exports.signup = function *() {
           username: user.username
         },
         links: {
-          self: config.app.host + ':' + config.app.port + "/users/" + user.username
+          self: config.app.host + "/users/" + user.username
         }
       }
     };
   } catch (err) {
+    if(err.name === 'ValidationError') {
+      this.status = 422;
+      Object.keys(err.errors).forEach((key) => {
+        result.errors.push(err.errors[key].message);
+      });
+      return this.body = result;
+    }
     if(err.code === 11000) {
       this.status = 409;
       result.errors.push('The username already exists');

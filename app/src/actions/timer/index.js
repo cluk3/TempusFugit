@@ -1,24 +1,16 @@
-export const ADD_INTERVAL = 'ADD_INTERVAL';
-export const REMOVE_INTERVAL = 'REMOVE_INTERVAL';
-export const SET_TIMER_NAME = 'SET_TIMER_NAME';
+export const SET_TIMERS_LIST = 'SET_TIMERS_LIST';
+export const DELETE_TIMER = 'DELETE_TIMER';
 
-export function addInterval(interval) {
+export function setTimersList(timers) {
   return {
-    type: ADD_INTERVAL,
-    interval
+    type: SET_TIMERS_LIST,
+    timers
   };
 }
 
-export function removeInterval(index) {
+export function deleteTimer(id) {
   return {
-    type: REMOVE_INTERVAL,
-    index
-  };
-}
-
-export function setTimerName(name) {
-  return {
-    type: SET_TIMER_NAME,
-    name
+    type: DELETE_TIMER,
+    timer_id: id
   };
 }

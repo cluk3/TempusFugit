@@ -15,7 +15,7 @@ describe('Sign in', () => {
 
   it('should return json with jwt and user id', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .type('form')
     .send({
       username: 'john',
@@ -35,7 +35,7 @@ describe('Sign in', () => {
 
   it('should return a jwt', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .type('form')
     .send({
       username: 'john',
@@ -52,7 +52,7 @@ describe('Sign in', () => {
 
   it('should return error if response has no username field', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .send({
       password: 'wordpass'
     })
@@ -66,7 +66,7 @@ describe('Sign in', () => {
 
   it('should return error if response has no password field', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .send({
       username: 'john'
     })
@@ -80,7 +80,7 @@ describe('Sign in', () => {
 
   it('should return error if response has no psw and username field', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .expect('Content-Type', /json/)
     .expect(422)
     .end(function(err, res){
@@ -91,7 +91,7 @@ describe('Sign in', () => {
 
   it('should return error if invalid username', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .send({
       username: 'johny',
       password: 'wordpass'
@@ -106,7 +106,7 @@ describe('Sign in', () => {
 
   it('should return error if psw does not match', (done) => {
     request(app)
-    .post('/signin')
+    .post('/api/signin')
     .send({
       username: 'john',
       password: 'wrongpass'

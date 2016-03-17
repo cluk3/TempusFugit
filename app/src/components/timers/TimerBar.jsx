@@ -1,6 +1,8 @@
 import React from 'react';
 import Row from 'react-flexbox-grid/lib/components/Row';
 import Col from 'react-flexbox-grid/lib/components/Col';
+var PureMixin = require('react-pure-render/mixin');
+import ReactTooltip from 'react-tooltip';
 
 const TimerSessionBar = (props) => {
   const { timeline, active, goToRound } = props;
@@ -30,12 +32,18 @@ const TimerSessionBar = (props) => {
       style.borderRadius = '0 5px 5px 0';
     }
     return (
-      <div key={i} style={style} onClick={() => goToRound(i)}>
-      </div>
+        <div key={i} data-tip={round.name+'<br/>Duration: '+round.duration+'s'}
+        style={style} onClick={() => goToRound && goToRound(i)}>
+        </div>
     );
   });
   return (
-    <Row center='xs' ><Col xs={10}>{roundBars}</Col></Row>
+    <Row center='xs' >
+      <Col xs={12}>
+      {roundBars}
+      <ReactTooltip multiline={true} place='top' type='dark' effect='solid'/>
+      </Col>
+    </Row>
   );
 };
 

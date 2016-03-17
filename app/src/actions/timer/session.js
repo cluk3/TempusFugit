@@ -1,4 +1,4 @@
-import { getTotalTime, getTimeline } from '../../reducers/timer';
+import { getTotalTime, getTimeline } from '../../reducers/timers/newTimer';
 
 export const PAUSE_SESSION = 'PAUSE_SESSION';
 export const START_SESSION = 'START_SESSION';
@@ -83,7 +83,9 @@ export function initState(timer) {
     state
   };
 }
+
 let idInt;
+
 export const clockMiddleware = store => next => action => {
   if(action.type === START_SESSION) {
     clearInterval(idInt);

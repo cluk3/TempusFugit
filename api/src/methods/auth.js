@@ -9,7 +9,7 @@ const auth = function* (next) {
     };
     const opts = {
       expiresIn: '1d',
-      issuer: config.app.host + ':' + config.app.port,
+      issuer: config.app.host,
       subject: user._id
     };
     const token = jwt.sign(payload, config.jwt.secret, opts); //could throw err
@@ -22,6 +22,8 @@ const auth = function* (next) {
 
   this.isAuthenticated = () => {
     let token;
+    if(!this.headers.authorization)
+      return false;
     const authHeader = this.headers.authorization.split(' ');
     if(authHeader[0] === 'Bearer')
       token = authHeader[1];
@@ -30,7 +32,7 @@ const auth = function* (next) {
     if (!token) return false;
     try {
       const decoded = jwt.verify(token, config.jwt.secret, {
-        issuer: config.app.host + ':' + config.app.port,
+        issuer: config.app.host,
       });
       this.state.user= {
         id: decoded.sub,

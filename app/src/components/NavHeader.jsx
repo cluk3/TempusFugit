@@ -3,14 +3,27 @@ import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
+import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import config from '../../../config';
 
-const NavHeader = ({isAuthenticated, onLogoutClick, linkTo}) => {
+const NavHeader = (props) => {
+  const {
+    isAuthenticated,
+    onLogoutClick,
+    linkTo,
+    isLeftNavOpen,
+    handleLeftNavToggle
+  } = props;
   return (
     <AppBar
     title = {<span>{config.app.name}</span>}
-    showMenuIconButton = {false}
+    iconElementLeft={
+      <IconButton onTouchTap={handleLeftNavToggle}>
+        {isLeftNavOpen ? <NavigationClose /> : <NavigationMenu />}
+      </IconButton>
+    }
     iconElementRight={
       <IconMenu
         iconButtonElement={

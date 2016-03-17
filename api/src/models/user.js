@@ -11,12 +11,14 @@ var UserSchema = new Schema({
     transform: function(doc, ret, options) {
       delete ret.password;
     },
+    timestamps: true
   },
 });
 
 /**
  * Middlewares
  */
+ 
 UserSchema.pre("save", function(done) {
   // only hash the password if it has been modified (or is new)
   if (!this.isModified("password")) {
