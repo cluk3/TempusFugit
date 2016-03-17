@@ -55,7 +55,7 @@ var specific = {
       port: process.env.PORT,
       apiPort: process.env.APIPORT,
       name: "TempusFugit",
-      host: 'https://peaceful-reef-80351.herokuapp.com',
+      host: 'https://timersfugit.herokuapp.com',
       cookies: {
         opts: {
           secure: true,
