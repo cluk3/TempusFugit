@@ -12,7 +12,7 @@ import historyApiFallback from 'koa-connect-history-api-fallback';
 //import cors from 'koa-cors';
 import serve from 'koa-static';
 import favicon from 'koa-favicon';
-import ssl from 'koa-ssl';
+import enforceHttps from 'koa-sslify';
 
 const app = koa();
 /*
@@ -23,7 +23,7 @@ app.use(cors({
 */
 app.use(compress());
 app.use(logger());
-app.use(ssl());
+app.use(enforceHttps({ trustProtoHeader: true }));
 app.use(favicon(__dirname + '/favicon/favicon.ico'));
 app.use(historyApiFallback());
 if(config.env === 'production')
