@@ -3,7 +3,7 @@ import KeyboardArrowUp from 'material-ui/lib/svg-icons/hardware/keyboard-arrow-u
 import KeyboardArrowDown from 'material-ui/lib/svg-icons/hardware/keyboard-arrow-down';
 import PureMixin from 'react-pure-render/mixin';
 import debounce from 'lodash.debounce';
-
+import Colors from 'material-ui/lib/styles/colors';
 
 const TimeUnitConfig = React.createClass({
   mixins: [PureMixin],
@@ -28,12 +28,12 @@ const TimeUnitConfig = React.createClass({
       onBlur
     } = this.props;
     return (
-      <div className="time-units">
-        <button className='increase' onClick={incrHandler}><KeyboardArrowUp /></button>
-        <input type="text" name={name} maxLength="2" value={timeUnit} className="time-unit"
+      <div className="time-unit">
+        <button className='increase' onClick={incrHandler}><KeyboardArrowUp color={Colors.grey400} /></button>
+        <input type="text" name={name} maxLength="2" value={timeUnit} className="time-unit--input"
          onChange={onInputChange} onWheel={onWheel} onBlur={onBlur} onFocus={onFocus}
          onKeyPress={this.keyPressHandler} ></input>
-        <button className='decrease' onClick={decrHandler}><KeyboardArrowDown /></button>
+        <button className='decrease' onClick={decrHandler}><KeyboardArrowDown color={Colors.grey400} /></button>
       </div>
     );
   }

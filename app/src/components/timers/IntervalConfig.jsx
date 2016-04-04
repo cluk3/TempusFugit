@@ -98,19 +98,21 @@ const IntervalConfig = React.createClass({ // Props: minutes, seconds, onTimeUni
       onWheel: this.wheelHandler,
       onInputChange: this.onTimeUnitChange,
     };
+    const errorClass = !this.props.duration ? 'time-error' : '';
     return (
-      <div className="time" onMouseLeave={this.mouseLeaveHandler} onFocus={this.focusHandler}
+      <div className={'time '+errorClass} onMouseLeave={this.mouseLeaveHandler} onFocus={this.focusHandler}
       onBlur={this.blurHandler}>
         <TimeUnitConfig name='minutes'
          incrHandler={this.minIncrHandler}
          decrHandler={this.minDecrHandler} timeUnit={minutes}
-         {...timeUnitProps}/>
-        <div className="colon">:</div>
+         {...timeUnitProps} />
+        <div className="time-colon">:</div>
         <TimeUnitConfig name='seconds'
          incrHandler={this.secIncrHandler}
          decrHandler={this.secDecrHandler} timeUnit={seconds}
          {...timeUnitProps}/>
          <em>seconds</em>
+         <hr className={this.state.focused ? 'time--focused' : ''}/>
       </div>
     );
   }

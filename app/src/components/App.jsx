@@ -33,8 +33,11 @@ const App  = React.createClass ({
   handleLeftNavToggle() {
     this.setState({isLeftNavOpen: !this.state.isLeftNavOpen});
   },
-  handleLeftNavClose() {
-    this.setState({isLeftNavOpen: false});
+  handleLeftNavItemTap(link) {
+    return () => {
+      this.setState({isLeftNavOpen: false});
+      this.props.linkTo(link);
+    };
   },
   render() {
     const {isSnackbarOpen, errors, closeSnackbar, message} = this.props;
@@ -46,15 +49,13 @@ const App  = React.createClass ({
           isLeftNavOpen={this.state.isLeftNavOpen}
           handleLeftNavToggle={this.handleLeftNavToggle}
         />
-        <Paper zDepth={5} rounded={false}>
-        <Grid fluid>
-          <Row>
+        <Grid fluid style={{padding: '0 1em'}}>
+          <Row center='xs'>
             <Col xs={12}>
             {this.props.children}
             </Col>
           </Row>
         </Grid>
-        </Paper>
         <Snackbar
           open={isSnackbarOpen}
           message={message}
@@ -75,19 +76,20 @@ const App  = React.createClass ({
           <ErrorMsg errors = {errors}/>
         </Dialog>
         <LeftNav
+          style={{top: 65}}
           open={this.state.isLeftNavOpen}
           docked={false}
           onRequestChange={isLeftNavOpen => this.setState({isLeftNavOpen})}
         >
-          <Link to="/timers">
-            <MenuItem onTouchTap={this.handleLeftNavClose}>Timers</MenuItem>
-          </Link>
-          <Link to="/timers/new">
-            <MenuItem onTouchTap={this.handleLeftNavClose}>New Timer</MenuItem>
-          </Link>
-          <Link to="/timers/session">
-            <MenuItem onTouchTap={this.handleLeftNavClose}>Session</MenuItem>
-          </Link>
+            <MenuItem onTouchTap={this.handleLeftNavItemTap('/timers')}>
+              Timers
+            </MenuItem>
+            <MenuItem onTouchTap={this.handleLeftNavItemTap('/timers/new')}>
+              New Timer
+            </MenuItem>
+            <MenuItem onTouchTap={this.handleLeftNavItemTap('/timers/session')}>
+              Session
+            </MenuItem>
         </LeftNav>
       </div>
       );

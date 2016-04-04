@@ -12,15 +12,79 @@ span.session-timer-text {
   overflow: hidden;
 }
 
-.curr-round {
-  font-size: 32px;
+.timer_session {
+  color: white;
+  position: relative;
 }
 
-.round-inactive {
+.timer_session__countdown {
+  font-size: 24vw;
+  line-height: 24vw;
+}
+
+.timer_session__text {
+  span {
+    font-size: 3vw;
+  }
+}
+
+.timer_session__name {
+  margin-bottom: 0;
+  word-wrap: break-word;
+}
+
+.round_skipper {
+  height: 80px;
+  span {
+    line-height: 80px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+}
+
+.round_skipper__button {
+  line-height: 80px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.round_skipper__text {
+  span {
+    font-size: 3vw;
+  }
+}
+
+.round_skipper--current {
+  span {
+    font-size: 4vw;
+  }
+}
+
+.round_skipper--inactive {
   background-color: black;
 }
 
-.session-timer {
-  font-size: 1.5em;
-  color: white;
+.round_skipper__reset, .round_skipper__flow_control {
+  height: 120px;
+  line-height: 120px;
+  width: 120px;
+}
+
+.round_skipper__reset {
+  right: 0;
+}
+.icon__2x {
+  transform: scale(2);
+}
+.round_skipper__flow_control {
+  left: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .round_skipper__reset, .round_skipper__flow_control {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+  }
 }

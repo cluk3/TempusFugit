@@ -16,7 +16,7 @@ const _Dashboard = React.createClass({
     const { isAuthenticated, username } = this.props;
     return (
       <Row center='xs'>
-        <Col xs={6}>
+        <Col xs={12} md={6}>
         <h1> Hello {isAuthenticated ? username : 'unathenticated user'}! </h1>
         </Col>
       </Row>

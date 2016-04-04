@@ -7,7 +7,7 @@ export const PREV_ROUND = 'PREV_ROUND';
 export const RESET_TIMER = 'RESET_TIMER';
 export const RESET_ROUND = 'RESET_ROUND';
 export const TICK = 'TICK';
-export const INIT_STATE = 'INIT_STATE';
+export const INIT_SESSION_STATE = 'INIT_SESSION_STATE';
 export const GO_TO_ROUND = 'GO_TO_ROUND';
 
 export function pauseSession() {
@@ -68,6 +68,7 @@ export function tick() {
 export function initState(timer) {
   const timeline = getTimeline(timer);
   const state = {
+    timerName: timer.name,
     totalElapsed: 0,
     totalRemaining: getTotalTime(timer),
     roundElapsed: 0,
@@ -78,7 +79,7 @@ export function initState(timer) {
     paused: true
   };
   return {
-    type: INIT_STATE,
+    type: INIT_SESSION_STATE,
     pauseTimer: true,
     state
   };

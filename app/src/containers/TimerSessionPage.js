@@ -14,6 +14,7 @@ import TimerSession from '../components/timers/TimerSession';
 const mapStateToProps = (state, ownProps) => {
   const session = state.timerSession;
   return {
+    timerName: session.timerName,
     totalElapsed: session.totalElapsed,
     totalRemaining: session.totalRemaining,
     roundElapsed: session.roundElapsed,

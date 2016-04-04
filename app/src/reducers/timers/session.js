@@ -6,12 +6,13 @@ import {
   RESET_TIMER,
   RESET_ROUND,
   TICK,
-  INIT_STATE,
+  INIT_SESSION_STATE,
   GO_TO_ROUND
 } from '../../actions/timer/session';
 
 // Actions: Pause, skip round, reset timer, reset round
 const initialState = {
+  timerName: 'Sample timer',
   totalElapsed: 0, //number of seconds
   totalRemaining: 150,
   roundElapsed: 0,
@@ -42,7 +43,7 @@ export default function timerSession(state = initialState, action) {
   } = state;
   const getRemaining = (i) => timeline.slice(i).reduce((prev,curr) => prev+curr.duration, 0);
   switch(action.type) {
-    case INIT_STATE:
+    case INIT_SESSION_STATE:
       return action.state;
     case START_SESSION:
       return {
@@ -137,7 +138,7 @@ export default function timerSession(state = initialState, action) {
       };
     case RESET_TIMER:
       return {
-        timeline,
+        ...state,
         active: 0,
         activeColor: timeline[0].color,
         roundElapsed: 0,

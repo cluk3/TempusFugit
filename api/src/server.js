@@ -23,17 +23,16 @@ app.use(cors({
 */
 app.use(compress());
 app.use(logger());
-app.use(enforceHttps({ trustProtoHeader: true }));
+if(config.env === 'production')
+  app.use(enforceHttps({ trustProtoHeader: true }));
 app.use(favicon(__dirname + '/favicon/favicon.ico'));
 app.use(historyApiFallback());
 if(config.env === 'production')
   app.use(serve(path.join(config.root,'app','dist')));
 else
   app.use(serve(path.join(config.root,'app','build')));
+
 dbConfig();
-
-
-
 
 app.use(auth);
 app.use(bodyparser());

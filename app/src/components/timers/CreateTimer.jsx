@@ -8,11 +8,14 @@ import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 var PureMixin = require('react-pure-render/mixin');
 import debounce from 'lodash.debounce';
+import Colors from 'material-ui/lib/styles/colors';
 
 // TODO:
 // implement loop (disable repeat)
 // scroll to added round/interval
-// Validations ( Timer name)
+// Validations:
+//   round duration can't be 0
+//   Timer should have at least 1 interval with one round
 const CreateTimer = React.createClass({
   mixins: [PureMixin],
   componentWillMount() {
@@ -20,6 +23,11 @@ const CreateTimer = React.createClass({
     this.onIntervalTypeChange = debounce(this.props.onIntervalTypeChange, 500);
     this.onIntervalRepeatChange = debounce(this.props.onIntervalRepeatChange, 500);
     this.onRoundNameChange = debounce(this.props.onRoundNameChange, 500);
+  },
+  validateTimerName(name) {
+    if(name === '')
+      return 'Name can\'t be blank';
+    return '';
   },
   render() {
     const {
@@ -57,38 +65,45 @@ const CreateTimer = React.createClass({
       <Col xs = {12}>
         <Row><Col xs={12}><h2>Create new Timer:</h2></Col></Row>
         <Row middle='xs'>
-        <Col xs={6}>
-          <TextField
-            hintText = 'Insert timer name'
-            floatingLabelText = 'Timer Name'
-            maxLength={20}
-            type="text"
-            defaultValue={name}
-            onChange= {(ev) => {
-              ev.persist();
-              this.onTimerNameChange(ev.target.value);
-            }}
-            name = 'timerName'
-            //errorText = {error}
-          />
-        </Col>
-        <Col xs={6}><p>{Math.floor(totalTime/60)} minutes, {totalTime%60} seconds</p></Col>
+          <Col xs={12} md={6}>
+            <TextField
+              hintText = 'Insert timer name'
+              floatingLabelText = 'Timer Name'
+              maxLength={20}
+              type='text'
+              defaultValue={name}
+              onChange= {(ev) => {
+                ev.persist();
+                this.onTimerNameChange(ev.target.value);
+              }}
+              name = 'timerName'
+              minLength={1}
+              errorText = {this.validateTimerName(name)}
+            />
+          </Col>
+          <Col xs={12} md={6}>
+            <p>
+              <em>Total duration:</em> {Math.floor(totalTime/60)} minutes, {totalTime%60} seconds
+            </p>
+          </Col>
         </Row>
           {Intervals}
           <br/>
-        <Row>
-        <Col xsOffset={8} xs={2}><p>Add Interval</p></Col>
-        <Col xs={1}>
-          <FloatingActionButton onMouseDown={() => onAddInterval()}>
-          <ContentAdd />
-          </FloatingActionButton>
-        </Col>
-        </Row>
-        <Row>
-        <Col xs={12}>
-          <RaisedButton onMouseUp={() => saveTimer({name, intervals})} label="Create Timer" primary={true}/>
-          <RaisedButton onMouseUp={() => saveTimer({name, intervals}, true)} label="Start Timer" primary={true}/>
-        </Col>
+          <Row end='xs'>
+            <Col xs={12} md={10}>
+            <RaisedButton style={{
+                'position': 'relative',
+                'left': 0,
+                'top': -8
+              }}
+              onMouseUp={() => onAddInterval()} label='Add Interval' primary={true} icon={<ContentAdd />} />
+            </Col>
+          </Row>
+        <Row around='xs'>
+          <Col xs={12}>
+            <RaisedButton backgroundColor={Colors.deepPurple600} labelColor='white' style={{'marginRight': 16}} onMouseUp={() => saveTimer({name, intervals})} label='Save Timer'/>
+            <RaisedButton backgroundColor={Colors.deepPurple600} labelColor='white' onMouseUp={() => saveTimer({name, intervals}, true)} label='Start Timer'/>
+          </Col>
         </Row>
         <br/>
         <br/>

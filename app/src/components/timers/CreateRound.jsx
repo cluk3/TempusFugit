@@ -14,6 +14,11 @@ import RoundColors from '../../constants/RoundColors';
 //TODO
 const CreateRound = React.createClass({
   mixins: [PureMixin],
+  validateRoundName(name) {
+    if(name==='')
+      return 'Round name can\'t be blank';
+    return '';
+  },
   render() {
     const {
       name,
@@ -28,39 +33,39 @@ const CreateRound = React.createClass({
     } = this.props;
     return (
       <Row center='xs'>
-      <Col xs={10} style={{'border': '2px solid purple', 'borderRadius': '20px'}}>
-        <Row>
-        <Col xs={10}><h3>Create new Round</h3></Col>
-        <Col xs={2}>
+      <Col xs={12} md={10} style={{'border': '2px solid purple', 'borderRadius': '20px'}}>
+        <Row around='xs' style={{'position': 'relative'}}>
+        <Col xs={12}><h3>Create new Round</h3></Col>
           <FloatingActionButton
-           style={{"margin": '8px'}}
+           style={{"margin": '2px', 'position': 'absolute', 'right': 0}}
            secondary={true} mini={true}
            onMouseDown={() => onRemoveRound(roundIndex, intervalIndex)}>
             <ContentRemove />
           </FloatingActionButton>
-        </Col>
         </Row>
         <Row middle='xs'>
-        <Col xs={6}>
-          <TextField
-            hintText = 'Insert round name'
-            floatingLabelText = 'Round Name'
-            defaultValue={name}
-            type='text'
-            maxLength={15}
-            onChange = {(ev) => {
-              ev.persist();
-              onRoundNameChange(ev.target.value, intervalIndex, roundIndex);
-            }}
-            name = 'roundName'
-            //errorText = {error}
-            >
-          </TextField>
+          <Col xs={12} md={6}>
+            <TextField
+              hintText = 'Insert round name'
+              floatingLabelText = 'Round Name'
+              defaultValue={name}
+              type='text'
+              maxLength={15}
+              minLength={1}
+              onChange = {(ev) => {
+                ev.persist();
+                onRoundNameChange(ev.target.value, intervalIndex, roundIndex);
+              }}
+              name = 'roundName'
+              errorText = {this.validateRoundName(name)}
+              >
+            </TextField>
           </Col>
-          <Col xs={6}>
-          <IntervalConfig duration={duration}
-          updateDuration={(dur) => onRoundDurationChange(dur, intervalIndex, roundIndex)}/>
-          </Col></Row>
+          <Col xs={12} md={6}>
+            <IntervalConfig duration={duration}
+            updateDuration={(dur) => onRoundDurationChange(dur, intervalIndex, roundIndex)}/>
+          </Col>
+        </Row>
           <SelectField hintText = 'Set color'
           value={color}
           floatingLabelText = 'Color'

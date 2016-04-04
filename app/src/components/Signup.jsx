@@ -55,7 +55,7 @@ const Signup = React.createClass({
   render() {
     return (
       <Row style = {{height: '60vh'}} center='xs' middle = 'xs'>
-        <Col xs = {6}>
+        <Col xs={12} md={6}>
           <h1>Sign up</h1>
           {this.props.isAuthenticated ?
             <Row center='xs' middle = 'xs'>

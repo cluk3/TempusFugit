@@ -1,7 +1,8 @@
 import {
   ADD_INTERVAL,
   REMOVE_INTERVAL,
-  SET_TIMER_NAME
+  SET_TIMER_NAME,
+  INIT_NEW_TIMER
 } from '../../actions/timer/newTimer';
 import {
   ADD_ROUND,
@@ -24,6 +25,10 @@ const initialState = {
 
 export default function newTimer(state = initialState, action) {
   switch(action.type) {
+    case INIT_NEW_TIMER:
+      if(action.timer)
+        return action.timer;
+      return initialState;
     case ADD_INTERVAL:
       const interval = action.interval || intervalReducer(undefined, {});
       return {

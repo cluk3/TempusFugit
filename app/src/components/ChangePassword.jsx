@@ -110,7 +110,7 @@ const ChangePassword = React.createClass({
     const {oldPassword, newPassword, pswConfirm} = this.state;
     return (
       <Row style = {{height: '60vh'}} center='xs' middle = 'xs'>
-        <Col xs = {6}>
+        <Col xs = {12} md={6}>
           <h1>Change Password</h1>
             <form onSubmit = {
               (e) => {
