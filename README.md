@@ -1,5 +1,6 @@
 # A fully customizable timer! Under construction :)
 
+You can try it at https://timersfugit.herokuapp.com
 
 ## Instructions
 
