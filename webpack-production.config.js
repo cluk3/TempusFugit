@@ -56,7 +56,9 @@ module.exports = {
         }
       }),
     new HtmlwebpackPlugin({
-      title: 'TempusFugit'
+      title: 'TempusFugit',
+      template: 'my-index.ejs', // Load a custom template
+      inject: 'body' // Inject all scripts into the body
     }),
     new webpack.ProvidePlugin({
       'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
