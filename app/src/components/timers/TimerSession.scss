@@ -35,21 +35,29 @@ span.session-timer-text {
 
 .round_skipper {
   height: 80px;
+  overflow: hidden;
+  text-overflow: clip;
   span {
-    line-height: 80px;
     max-width: 100%;
-    overflow: hidden;
-    text-overflow: clip;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 .round_skipper__button {
-  line-height: 80px;
   border: 1px solid white;
   cursor: pointer;
+  height: 100%;
+  > div, > span {
+    height: 100%;
+  }
 }
 
 .round_skipper__text {
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: clip;
+  height: 100%;
   span {
     font-size: 3vw;
   }
@@ -63,6 +71,7 @@ span.session-timer-text {
 
 .round_skipper--inactive {
   background-color: black;
+  height: 100%;
 }
 
 .round_skipper__reset, .round_skipper__flow_control {

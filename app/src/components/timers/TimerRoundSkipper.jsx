@@ -24,8 +24,12 @@ const TimerRoundSkipper = (props) => {
   let Prev, Curr, Next;
   Curr = <Col xs={4} onClick={resetRound}
           className='round_skipper--current round_skipper__button'>
-    <span>{timeline[active].name}</span>
-    </Col>;
+            <Row middle='xs'>
+              <Col xs={12}>
+                <span>{timeline[active].name}</span>
+              </Col>
+            </Row>
+          </Col>;
 
   if(active === 0) { // the first round is active
     Prev = <Col xs={4} className='round_skipper--inactive'></Col>;
@@ -94,7 +98,7 @@ const TimerRoundSkipper = (props) => {
     );
   }
   return (
-    <Row className='round_skipper'>
+    <Row className='round_skipper' middle='xs'>
       {Prev}
       {Curr}
       {Next}
